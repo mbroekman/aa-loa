@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.3] - 2026-07-24
+
+### Added
+
+- Major UI overhaul of the HR Dashboard and Player Dashboard with modern Bootstrap 5 aesthetic.
+- Introduced modern metric cards to filter active, upcoming, and processed Leave of Absences.
+- Added comprehensive dark mode support compatible with legacy Alliance Auth themes (night, slate, darkly, cyborg).
+- Added robust date validation (client-side and server-side) preventing manual text entry in date pickers.
+
+### Fixed
+
+- Fixed GitHub Actions workflows by updating deprecated action versions (checkout@v4, setup-python@v5).
+- Fixed pre-commit stylelint configuration to allow empty input.
+
 ## [0.0.2] - 2026-07-24
 
 ### Added
