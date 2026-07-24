@@ -24,11 +24,11 @@
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     border-bottom: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-size: 0.8em;
+    font-size: 0.75em;
 }
 
 .metric-card .panel-body {
@@ -37,7 +37,7 @@
 }
 
 .metric-card h2 {
-    font-size: 1.8rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--bs-body-color, #333);
     margin: 0;
