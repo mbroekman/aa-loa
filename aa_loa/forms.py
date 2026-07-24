@@ -10,8 +10,8 @@ class PlayerLOAForm(forms.ModelForm):
         model = LeaveOfAbsence
         fields = ["start_date", "end_date", "reason"]
         widgets = {
-            "start_date": forms.DateInput(attrs={"type": "date", "class": "form-control"}),
-            "end_date": forms.DateInput(attrs={"type": "date", "class": "form-control"}),
+            "start_date": forms.DateInput(attrs={"type": "date", "class": "form-control", "onkeydown": "return false"}),
+            "end_date": forms.DateInput(attrs={"type": "date", "class": "form-control", "onkeydown": "return false"}),
             "reason": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
         }
 
