@@ -32,7 +32,7 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-size: 0.8rem;
-    color: #495057;
+
     margin: 0;
 }
 
@@ -44,7 +44,7 @@
 .metric-card h2 {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #212529;
+
     margin: 0;
 }
 
@@ -70,7 +70,7 @@
 .modern-card .panel-title {
     font-weight: 600;
     font-size: 1.1rem;
-    color: #212529;
+
     margin: 0;
 }
 
