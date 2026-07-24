@@ -11,7 +11,7 @@
 {% block content %}
 <div class="col-lg-12">
     <h1 class="page-header text-center">Leave of Absence - HR Dashboard</h1>
-    
+
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-12 text-right">
             <a href="{% url 'aa_loa:index' %}" class="btn btn-primary">Go to Player Dashboard</a>
@@ -124,9 +124,9 @@
         $('#loaTable').DataTable({
             "order": [[ 2, "desc" ]],
             "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-                   "<'row'<'col-sm-12 mb-2'p>>" +
-                   "<'row'<'col-sm-12'tr>>" +
-                   "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
+                "<'row'<'col-sm-12 mb-2'p>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
         });
 
         // When start_date changes, update the min attribute of end_date
@@ -134,7 +134,7 @@
             var startDate = $(this).val();
             if (startDate) {
                 $('#id_end_date').attr('min', startDate);
-                
+
                 // If end_date is now before start_date, clear it
                 var endDate = $('#id_end_date').val();
                 if (endDate && endDate < startDate) {

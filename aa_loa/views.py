@@ -1,18 +1,20 @@
+# Django
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import get_object_or_404, redirect, render
-from django.utils import timezone
+
+# Alliance Auth
+from allianceauth.notifications import notify
 
 from .forms import DirectorLOAForm, PlayerLOAForm
 from .models import LeaveOfAbsence
-from allianceauth.notifications import notify
 
 
 @login_required
 @permission_required("aa_loa.basic_access")
 def loa_index(request):
     user_loas = LeaveOfAbsence.objects.filter(user=request.user).order_by("-start_date")
-    
+
     if request.method == "POST":
         form = PlayerLOAForm(request.POST)
         if form.is_valid():
@@ -54,15 +56,18 @@ def hr_revoke_loa(request, loa_id):
             user=loa.user,
             title="Leave of Absence Cancelled",
             message=f"Your Leave of Absence starting on {loa.start_date} was cancelled by HR ({request.user.username}).",
-            level="warning"
+            level="warning",
         )
     return redirect("aa_loa:hr_dashboard")
+
 
 @login_required
 @permission_required("aa_loa.manage_loa")
 def loa_hr_dashboard(request):
-    all_loas = LeaveOfAbsence.objects.all().select_related("user").order_by("-start_date")
-    
+    all_loas = (
+        LeaveOfAbsence.objects.all().select_related("user").order_by("-start_date")
+    )
+
     if request.method == "POST":
         form = DirectorLOAForm(request.POST)
         if form.is_valid():

@@ -7,7 +7,7 @@
 {% block content %}
 <div class="col-lg-12">
     <h1 class="page-header text-center">Leave of Absence</h1>
-    
+
     {% if perms.aa_loa.manage_loa %}
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-12 text-right">
@@ -121,7 +121,7 @@
             var startDate = $(this).val();
             if (startDate) {
                 $('#id_end_date').attr('min', startDate);
-                
+
                 // If end_date is now before start_date, clear it
                 var endDate = $('#id_end_date').val();
                 if (endDate && endDate < startDate) {

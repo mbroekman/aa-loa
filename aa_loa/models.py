@@ -1,3 +1,4 @@
+# Django
 from django.contrib.auth.models import Group, User
 from django.db import models
 from django.utils import timezone
@@ -41,12 +42,13 @@ class LeaveOfAbsence(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     is_revoked = models.BooleanField(
         default=False, help_text="Set to true if the user returned early."
     )
     notified_return = models.BooleanField(
-        default=False, help_text="Set to true once the welcome back notification is sent."
+        default=False,
+        help_text="Set to true once the welcome back notification is sent.",
     )
 
     class Meta:

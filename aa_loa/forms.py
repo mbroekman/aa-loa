@@ -1,3 +1,4 @@
+# Django
 from django import forms
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -10,8 +11,20 @@ class PlayerLOAForm(forms.ModelForm):
         model = LeaveOfAbsence
         fields = ["start_date", "end_date", "reason"]
         widgets = {
-            "start_date": forms.DateInput(attrs={"type": "date", "class": "form-control", "onkeydown": "return false"}),
-            "end_date": forms.DateInput(attrs={"type": "date", "class": "form-control", "onkeydown": "return false"}),
+            "start_date": forms.DateInput(
+                attrs={
+                    "type": "date",
+                    "class": "form-control",
+                    "onkeydown": "return false",
+                }
+            ),
+            "end_date": forms.DateInput(
+                attrs={
+                    "type": "date",
+                    "class": "form-control",
+                    "onkeydown": "return false",
+                }
+            ),
             "reason": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
         }
 
@@ -19,8 +32,8 @@ class PlayerLOAForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Set minimum date for HTML5 date pickers to today
         today_str = timezone.localdate().strftime("%Y-%m-%d")
-        self.fields['start_date'].widget.attrs.update({'min': today_str})
-        self.fields['end_date'].widget.attrs.update({'min': today_str})
+        self.fields["start_date"].widget.attrs.update({"min": today_str})
+        self.fields["end_date"].widget.attrs.update({"min": today_str})
 
     def clean_start_date(self):
         start_date = self.cleaned_data.get("start_date")

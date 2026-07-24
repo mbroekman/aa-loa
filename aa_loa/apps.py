@@ -1,3 +1,4 @@
+# Django
 from django.apps import AppConfig
 
 
@@ -7,4 +8,5 @@ class LoaConfig(AppConfig):
     verbose_name = "Leave of Absence"
 
     def ready(self):
-        import aa_loa.signals  # noqa
+        # AA Industry App
+        import aa_loa.signals  # noqa: F401

@@ -1,11 +1,16 @@
-import logging
+# Standard Library
 
+# Third Party
 import requests
 from celery import shared_task
-from django.utils import timezone
+
+# Django
 from django.db import models
-from allianceauth.services.hooks import get_extension_logger
+from django.utils import timezone
+
+# Alliance Auth
 from allianceauth.notifications import notify
+from allianceauth.services.hooks import get_extension_logger
 
 from .models import LeaveOfAbsence, LOAConfig
 
@@ -24,45 +29,40 @@ def sync_loa_groups():
 
     loa_group = config.loa_group
     today = timezone.now().date()
-    
+
     # 1. Add users with active LOAs
     active_loas = LeaveOfAbsence.objects.filter(
-        start_date__lte=today,
-        end_date__gte=today,
-        is_revoked=False
+        start_date__lte=today, end_date__gte=today, is_revoked=False
     )
     for loa in active_loas:
         if not loa.user.groups.filter(id=loa_group.id).exists():
             loa.user.groups.add(loa_group)
             logger.info(f"Added {loa.user.username} to LOA Group.")
 
-    # 2. Remove users whose LOAs have ended or been revoked, 
+    # 2. Remove users whose LOAs have ended or been revoked,
     # but ONLY if they don't have another overlapping active LOA.
     inactive_loas = LeaveOfAbsence.objects.filter(
         models.Q(end_date__lt=today) | models.Q(is_revoked=True)
     )
-    
+
     for loa in inactive_loas:
         user = loa.user
         # Check if they have another active LOA right now
         has_active = LeaveOfAbsence.objects.filter(
-            user=user,
-            start_date__lte=today,
-            end_date__gte=today,
-            is_revoked=False
+            user=user, start_date__lte=today, end_date__gte=today, is_revoked=False
         ).exists()
-        
+
         if not has_active and user.groups.filter(id=loa_group.id).exists():
             user.groups.remove(loa_group)
             logger.info(f"Removed {user.username} from LOA Group.")
-            
+
             # Send Welcome Back Notification if not sent
             if not loa.notified_return and loa.end_date < today and not loa.is_revoked:
                 notify(
                     user=user,
                     title="Welcome Back from LOA",
                     message="Welcome back! Your LOA has expired. Let us know if you need an extension.",
-                    level="info"
+                    level="info",
                 )
                 loa.notified_return = True
                 loa.save(update_fields=["notified_return"])
@@ -88,16 +88,18 @@ def send_loa_webhook(loa_id):
 
     embed = {
         "title": title,
-        "color": 16753920, # Orange
+        "color": 16753920,  # Orange
         "fields": [
             {"name": "Player", "value": loa.user.username, "inline": True},
             {"name": "Start", "value": str(loa.start_date), "inline": True},
             {"name": "End", "value": str(loa.end_date), "inline": True},
-        ]
+        ],
     }
-    
+
     if loa.reason:
-        embed["fields"].append({"name": "Reason", "value": loa.reason[:1000], "inline": False})
+        embed["fields"].append(
+            {"name": "Reason", "value": loa.reason[:1000], "inline": False}
+        )
 
     payload = {"embeds": [embed]}
     try:
