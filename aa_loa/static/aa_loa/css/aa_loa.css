@@ -11,7 +11,9 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     overflow: hidden;
     margin-bottom: 20px;
-    background-color: #fff;
+    margin-bottom: 20px;
+    background-color: var(--bs-body-bg, #ffffff);
+    color: var(--bs-body-color, #212529);
 }
 
 .metric-card:hover {
@@ -38,16 +40,17 @@
 .metric-card h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #333;
+    color: var(--bs-body-color, #333);
     margin: 0;
 }
 
 /* Modern Generic Card (Forms & Tables) */
 .modern-card {
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--bs-border-color, rgba(0, 0, 0, 0.08));
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-    background-color: #fff;
+    background-color: var(--bs-body-bg, #ffffff);
+    color: var(--bs-body-color, #212529);
     margin-bottom: 25px;
     overflow: hidden;
 }
@@ -55,15 +58,15 @@
 .modern-card .panel-heading {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: var(--bs-tertiary-bg, #f8f9fa);
+    border-bottom: 1px solid var(--bs-border-color, rgba(0, 0, 0, 0.08));
     padding: 16px 20px;
 }
 
 .modern-card .panel-title {
     font-weight: 600;
     font-size: 1.1rem;
-    color: #2c3e50;
+    color: var(--bs-heading-color, inherit);
     margin: 0;
 }
 
@@ -79,20 +82,20 @@
 }
 
 .modern-table thead th {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #e9ecef;
+    background-color: var(--bs-tertiary-bg, #f8f9fa);
+    border-bottom: 2px solid var(--bs-border-color, #e9ecef);
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 0.5px;
-    color: #495057;
+    color: var(--bs-heading-color, #495057);
     padding: 12px 15px;
 }
 
 .modern-table tbody td {
     padding: 12px 15px;
     vertical-align: middle;
-    border-bottom: 1px solid #f1f3f5;
+    border-bottom: 1px solid var(--bs-border-color, #f1f3f5);
 }
 
 /* Status Badges (Pills) */
@@ -139,25 +142,53 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Theme compatibility overrides for dark mode (Alliance Auth Night/Dark themes) */
+/* Theme compatibility overrides for dark mode fallback (AA4 and AA3) */
+[data-bs-theme="dark"] .metric-card,
+[data-bs-theme="dark"] .modern-card,
 body.night .metric-card,
-body.night .modern-card {
-    background-color: #2d333b;
-    border-color: #444c56;
+body.night .modern-card,
+body.slate .metric-card,
+body.slate .modern-card,
+body.darkly .metric-card,
+body.darkly .modern-card,
+body.cyborg .metric-card,
+body.cyborg .modern-card {
+    background-color: var(--bs-dark-bg-subtle, #2b3035) !important;
+    border-color: var(--bs-border-color, #495057) !important;
 }
 
+[data-bs-theme="dark"] .metric-card h2,
+[data-bs-theme="dark"] .modern-card .panel-title,
 body.night .metric-card h2,
-body.night .modern-card .panel-title {
-    color: #adbac7;
+body.night .modern-card .panel-title,
+body.slate .metric-card h2,
+body.slate .modern-card .panel-title,
+body.darkly .metric-card h2,
+body.darkly .modern-card .panel-title,
+body.cyborg .metric-card h2,
+body.cyborg .modern-card .panel-title {
+    color: var(--bs-body-color, #f8f9fa) !important;
 }
 
+[data-bs-theme="dark"] .modern-card .panel-heading,
+[data-bs-theme="dark"] .modern-table thead th,
 body.night .modern-card .panel-heading,
-body.night .modern-table thead th {
-    background-color: #22272e;
-    border-color: #444c56;
-    color: #768390;
+body.night .modern-table thead th,
+body.slate .modern-card .panel-heading,
+body.slate .modern-table thead th,
+body.darkly .modern-card .panel-heading,
+body.darkly .modern-table thead th,
+body.cyborg .modern-card .panel-heading,
+body.cyborg .modern-table thead th {
+    background-color: var(--bs-tertiary-bg, #212529) !important;
+    border-color: var(--bs-border-color, #495057) !important;
+    color: var(--bs-heading-color, #f8f9fa) !important;
 }
 
-body.night .modern-table tbody td {
-    border-color: #373e47;
+[data-bs-theme="dark"] .modern-table tbody td,
+body.night .modern-table tbody td,
+body.slate .modern-table tbody td,
+body.darkly .modern-table tbody td,
+body.cyborg .modern-table tbody td {
+    border-color: var(--bs-border-color, #373e47) !important;
 }
