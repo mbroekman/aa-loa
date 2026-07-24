@@ -71,10 +71,32 @@
                                 <td>{{ loa.reason|default:"-"|truncatechars:50 }}</td>
                                 <td>
                                     {% if loa.is_active or loa.is_future %}
-                                        <form method="post" action="{% url 'aa_loa:revoke' loa.id %}" style="display:inline;">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Cancel this LOA?');">Return Early / Cancel</button>
-                                        </form>
+                                        <!-- Trigger Modal -->
+                                        <button type="button" class="btn btn-xs btn-danger" data-bs-toggle="modal" data-bs-target="#revokeModal{{ loa.id }}">
+                                            Return Early / Cancel
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="revokeModal{{ loa.id }}" tabindex="-1" aria-labelledby="revokeModalLabel{{ loa.id }}" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="revokeModalLabel{{ loa.id }}">Confirm Cancellation</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to return early and cancel this Leave of Absence?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
+                                                        <form method="post" action="{% url 'aa_loa:revoke' loa.id %}" style="display:inline;">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn-danger">Yes, Cancel LOA</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     {% endif %}
                                 </td>
                             </tr>
