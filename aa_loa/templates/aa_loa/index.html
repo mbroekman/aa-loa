@@ -6,7 +6,7 @@
 {% block page_title %}{% translate "Leave of Absence" %}{% endblock page_title %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'aa_loa/css/aa_loa.css' %}?v=0.0.6">
+    <link rel="stylesheet" href="{% static 'aa_loa/css/aa_loa.css' %}?v=0.0.7">
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@
     <div class="row">
         <!-- New LOA Form -->
         <div class="col-md-4">
-            <div class="modern-card">
+            <div class="panel panel-default modern-card">
                 <div class="panel-heading">
                     <h3 class="panel-title">Submit LOA</h3>
                 </div>
@@ -41,7 +41,7 @@
 
         <!-- Existing LOAs -->
         <div class="col-md-8">
-            <div class="modern-card">
+            <div class="panel panel-default modern-card">
                 <div class="panel-heading">
                     <h3 class="panel-title">Your LOAs</h3>
                 </div>

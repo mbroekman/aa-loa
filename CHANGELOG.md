@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.7] - 2026-07-24
+
+### Fixed
+
+- Completely removed all hardcoded colors and backgrounds from `.modern-card` and `.metric-card`.
+- Reintroduced `.panel.panel-default` classes to all cards so they perfectly inherit colors natively from whatever theme Alliance Auth is running (Light or Darkly), ensuring flawless readability out-of-the-box.
+
 ## [0.0.6] - 2026-07-24
 
 ### Fixed

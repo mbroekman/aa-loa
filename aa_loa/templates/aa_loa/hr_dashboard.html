@@ -7,7 +7,7 @@
 
 {% block extra_css %}
     {% include 'bundles/datatables-css-bs5.html' %}
-    <link rel="stylesheet" href="{% static 'aa_loa/css/aa_loa.css' %}?v=0.0.6">
+    <link rel="stylesheet" href="{% static 'aa_loa/css/aa_loa.css' %}?v=0.0.7">
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,7 @@
 
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-3">
-            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #28a745;" onclick="filterTable('Active')">
+            <div class="panel panel-default metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #28a745;" onclick="filterTable('Active')">
                 <div class="panel-heading">
                     <h3 class="panel-title">Active</h3>
                 </div>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #17a2b8;" onclick="filterTable('Upcoming')">
+            <div class="panel panel-default metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #17a2b8;" onclick="filterTable('Upcoming')">
                 <div class="panel-heading">
                     <h3 class="panel-title">Upcoming</h3>
                 </div>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #007bff;" onclick="filterTable('')">
+            <div class="panel panel-default metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #007bff;" onclick="filterTable('')">
                 <div class="panel-heading">
                     <h3 class="panel-title">Total Processed</h3>
                 </div>
@@ -53,7 +53,7 @@
     <div class="row">
         <!-- Proxy Submit -->
         <div class="col-md-4">
-            <div class="modern-card">
+            <div class="panel panel-default modern-card">
                 <div class="panel-heading">
                     <h3 class="panel-title">Proxy Submit LOA</h3>
                 </div>
@@ -70,7 +70,7 @@
 
         <!-- All LOAs -->
         <div class="col-md-8">
-            <div class="modern-card">
+            <div class="panel panel-default modern-card">
                 <div class="panel-heading">
                     <h3 class="panel-title">All LOAs</h3>
                 </div>
