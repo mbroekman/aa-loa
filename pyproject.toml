@@ -1,0 +1,52 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = [
+    "hatchling",
+]
+
+[project]
+name = "aa-loa"
+description = "Leave of Absence module for Alliance Auth"
+readme = "README.md"
+keywords = [
+    "allianceauth",
+    "leave_of_absence",
+    "loa",
+]
+license = { text = "MIT" }
+authors = [
+    { name = "Maddog Broekman", email = "maddogbroekman@gmail.com" },
+]
+requires-python = ">=3.10,<3.14"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+dynamic = [
+    "version",
+]
+dependencies = [
+    "allianceauth>=3.6.0",
+    "discord-webhook>=1.3.0",
+]
+urls.Changelog = "https://github.com/mbroekman/aa-loa/blob/main/CHANGELOG.md"
+urls.Homepage = "https://github.com/mbroekman/aa-loa"
+urls.Source = "https://github.com/mbroekman/aa-loa"
+urls.Tracker = "https://github.com/mbroekman/aa-loa/issues"
+
+[tool.hatch]
+version.path = "aa_loa/__init__.py"
+build.include = [
+    "/aa_loa",
+]
