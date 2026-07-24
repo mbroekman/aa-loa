@@ -122,7 +122,11 @@
 <script>
     $(document).ready(function() {
         $('#loaTable').DataTable({
-            "order": [[ 2, "desc" ]]
+            "order": [[ 2, "desc" ]],
+            "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                   "<'row'<'col-sm-12 mb-2'p>>" +
+                   "<'row'<'col-sm-12'tr>>" +
+                   "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
         });
 
         // When start_date changes, update the min attribute of end_date
