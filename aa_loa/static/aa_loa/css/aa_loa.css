@@ -27,7 +27,7 @@
     padding: 6px 10px;
 }
 
-.metric-card .panel-title {
+.metric-card .panel-heading h3.panel-title {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -67,7 +67,7 @@
     padding: 16px 20px;
 }
 
-.modern-card .panel-title {
+.modern-card .panel-heading h3.panel-title {
     font-weight: 600;
     font-size: 1.1rem;
 
@@ -161,21 +161,21 @@ body.cyborg .modern-card {
     border-color: #495057 !important;
 }
 
-[data-bs-theme="dark"] .metric-card .panel-title,
+[data-bs-theme="dark"] .metric-card .panel-heading h3.panel-title,
 [data-bs-theme="dark"] .metric-card h2,
-[data-bs-theme="dark"] .modern-card .panel-title,
-body.night .metric-card .panel-title,
+[data-bs-theme="dark"] .modern-card .panel-heading h3.panel-title,
+body.night .metric-card .panel-heading h3.panel-title,
 body.night .metric-card h2,
-body.night .modern-card .panel-title,
-body.slate .metric-card .panel-title,
+body.night .modern-card .panel-heading h3.panel-title,
+body.slate .metric-card .panel-heading h3.panel-title,
 body.slate .metric-card h2,
-body.slate .modern-card .panel-title,
-body.darkly .metric-card .panel-title,
+body.slate .modern-card .panel-heading h3.panel-title,
+body.darkly .metric-card .panel-heading h3.panel-title,
 body.darkly .metric-card h2,
-body.darkly .modern-card .panel-title,
-body.cyborg .metric-card .panel-title,
+body.darkly .modern-card .panel-heading h3.panel-title,
+body.cyborg .metric-card .panel-heading h3.panel-title,
 body.cyborg .metric-card h2,
-body.cyborg .modern-card .panel-title {
+body.cyborg .modern-card .panel-heading h3.panel-title {
     color: #f8f9fa !important;
 }
 
