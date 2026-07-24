@@ -1,11 +1,13 @@
 {% extends "allianceauth/base-bs5.html" %}
 {% load i18n %}
 {% load django_bootstrap5 %}
+{% load static %}
 
 {% block page_title %}{% translate "LOA HR Dashboard" %}{% endblock page_title %}
 
 {% block extra_css %}
     {% include 'bundles/datatables-css-bs5.html' %}
+    <link rel="stylesheet" href="{% static 'aa_loa/css/aa_loa.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -14,7 +16,7 @@
 
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-3">
-            <div class="panel panel-success text-center" style="cursor: pointer;" onclick="filterTable('Active')">
+            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #28a745;" onclick="filterTable('Active')">
                 <div class="panel-heading">
                     <h3 class="panel-title">Active</h3>
                 </div>
@@ -24,7 +26,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-info text-center" style="cursor: pointer;" onclick="filterTable('Upcoming')">
+            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #17a2b8;" onclick="filterTable('Upcoming')">
                 <div class="panel-heading">
                     <h3 class="panel-title">Upcoming</h3>
                 </div>
@@ -34,7 +36,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-primary text-center" style="cursor: pointer;" onclick="filterTable('')">
+            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #007bff;" onclick="filterTable('')">
                 <div class="panel-heading">
                     <h3 class="panel-title">Total Processed</h3>
                 </div>
@@ -51,7 +53,7 @@
     <div class="row">
         <!-- Proxy Submit -->
         <div class="col-md-4">
-            <div class="panel panel-warning">
+            <div class="modern-card">
                 <div class="panel-heading">
                     <h3 class="panel-title">Proxy Submit LOA</h3>
                 </div>
@@ -60,7 +62,7 @@
                         {% csrf_token %}
                         {% bootstrap_form form %}
                         <br>
-                        <button type="submit" class="btn btn-warning btn-block">Submit Proxy LOA</button>
+                        <button type="submit" class="btn btn-warning btn-block btn-modern">Submit Proxy LOA</button>
                     </form>
                 </div>
             </div>
@@ -68,12 +70,12 @@
 
         <!-- All LOAs -->
         <div class="col-md-8">
-            <div class="panel panel-default">
+            <div class="modern-card">
                 <div class="panel-heading">
                     <h3 class="panel-title">All LOAs</h3>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-striped table-hover" id="loaTable">
+                    <table class="table modern-table table-hover" id="loaTable">
                         <thead>
                             <tr>
                                 <th>Player</th>
@@ -91,13 +93,13 @@
                                 <td>{{ loa.user.username }}</td>
                                 <td>
                                     {% if loa.is_revoked %}
-                                        <span class="label label-default">Cancelled</span>
+                                        <span class="status-badge status-cancelled">Cancelled</span>
                                     {% elif loa.is_active %}
-                                        <span class="label label-success">Active</span>
+                                        <span class="status-badge status-active">Active</span>
                                     {% elif loa.is_future %}
-                                        <span class="label label-info">Upcoming</span>
+                                        <span class="status-badge status-upcoming">Upcoming</span>
                                     {% else %}
-                                        <span class="label label-default">Past</span>
+                                        <span class="status-badge status-past">Past</span>
                                     {% endif %}
                                 </td>
                                 <td>{{ loa.start_date }}</td>

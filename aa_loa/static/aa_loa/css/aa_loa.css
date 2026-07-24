@@ -1,0 +1,163 @@
+/*
+ * aa-loa custom modern styles
+ * A soft, premium UI aesthetic
+ */
+
+/* Metric Cards */
+.metric-card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.metric-card .panel-heading {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom: none;
+    padding: 15px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9em;
+}
+
+.metric-card .panel-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.metric-card h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+/* Modern Generic Card (Forms & Tables) */
+.modern-card {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.modern-card .panel-heading {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 16px 20px;
+}
+
+.modern-card .panel-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.modern-card .panel-body {
+    padding: 24px;
+}
+
+/* Table styling enhancements */
+.modern-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.modern-table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: #495057;
+    padding: 12px 15px;
+}
+
+.modern-table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+/* Status Badges (Pills) */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-active {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #28a745;
+}
+
+.status-upcoming {
+    background-color: rgba(23, 162, 184, 0.15);
+    color: #17a2b8;
+}
+
+.status-past {
+    background-color: rgba(108, 117, 125, 0.15);
+    color: #6c757d;
+}
+
+.status-cancelled {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+/* Action Buttons */
+.btn-modern {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: all 0.2s;
+}
+
+.btn-modern:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme compatibility overrides for dark mode (Alliance Auth Night/Dark themes) */
+body.night .metric-card,
+body.night .modern-card {
+    background-color: #2d333b;
+    border-color: #444c56;
+}
+
+body.night .metric-card h2,
+body.night .modern-card .panel-title {
+    color: #adbac7;
+}
+
+body.night .modern-card .panel-heading,
+body.night .modern-table thead th {
+    background-color: #22272e;
+    border-color: #444c56;
+    color: #768390;
+}
+
+body.night .modern-table tbody td {
+    border-color: #373e47;
+}
