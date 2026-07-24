@@ -82,12 +82,17 @@ Assign the following permissions to the appropriate states or groups in Alliance
 | `aa_loa.manage_loa` | Grants access to the HR Dashboard. Allows users to view all LOAs and submit proxy LOAs for other members. |
 
 ### 3. Setup the Celery Periodic Task
-To ensure LOA groups are automatically assigned and removed, you need to configure the daily Celery task.
+To ensure LOA groups are automatically assigned and removed every night, you need to configure the daily Celery task in your `local.py` settings file.
 
-1. Go to the **Django Admin Panel** (`/admin/`).
-2. Navigate to **Periodic Tasks** (under `Periodic Tasks`).
-3. Create a new task:
-   - **Name:** `LOA Group Sync`
-   - **Task (registered):** `aa_loa.tasks.sync_loa_groups`
-   - **Schedule:** Select `Crontab` and set it to run daily (e.g., `0 0 * * *` for midnight).
-4. Save the task. The system will now automatically activate/deactivate LOAs every day!
+Open your `myauth/settings/local.py` and add the following to your `CELERYBEAT_SCHEDULE` dictionary:
+
+```python
+from celery.schedules import crontab
+
+CELERYBEAT_SCHEDULE['aa_loa_sync_groups'] = {
+    'task': 'aa_loa.tasks.sync_loa_groups',
+    'schedule': crontab(minute='0', hour='0'),
+}
+```
+
+Restart your celery worker (`sudo systemctl restart supervisor`) and the system will automatically activate/deactivate LOAs every day at midnight!
