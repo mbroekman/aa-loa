@@ -138,3 +138,60 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Bruteforce Dark Theme Overrides */
+[data-bs-theme="dark"] .metric-card,
+[data-bs-theme="dark"] .modern-card,
+body.night .metric-card,
+body.night .modern-card,
+body.slate .metric-card,
+body.slate .modern-card,
+body.darkly .metric-card,
+body.darkly .modern-card,
+body.cyborg .metric-card,
+body.cyborg .modern-card {
+    background-color: #222222 !important;
+    border-color: #444444 !important;
+}
+
+[data-bs-theme="dark"] .metric-card .panel-heading h3.panel-title,
+[data-bs-theme="dark"] .metric-card h2,
+[data-bs-theme="dark"] .modern-card .panel-heading h3.panel-title,
+body.night .metric-card .panel-heading h3.panel-title,
+body.night .metric-card h2,
+body.night .modern-card .panel-heading h3.panel-title,
+body.slate .metric-card .panel-heading h3.panel-title,
+body.slate .metric-card h2,
+body.slate .modern-card .panel-heading h3.panel-title,
+body.darkly .metric-card .panel-heading h3.panel-title,
+body.darkly .metric-card h2,
+body.darkly .modern-card .panel-heading h3.panel-title,
+body.cyborg .metric-card .panel-heading h3.panel-title,
+body.cyborg .metric-card h2,
+body.cyborg .modern-card .panel-heading h3.panel-title {
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .modern-card .panel-heading,
+[data-bs-theme="dark"] .modern-table thead th,
+body.night .modern-card .panel-heading,
+body.night .modern-table thead th,
+body.slate .modern-card .panel-heading,
+body.slate .modern-table thead th,
+body.darkly .modern-card .panel-heading,
+body.darkly .modern-table thead th,
+body.cyborg .modern-card .panel-heading,
+body.cyborg .modern-table thead th {
+    background-color: #1a1a1a !important;
+    border-color: #444444 !important;
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .modern-table tbody td,
+body.night .modern-table tbody td,
+body.slate .modern-table tbody td,
+body.darkly .modern-table tbody td,
+body.cyborg .modern-table tbody td {
+    border-color: #333333 !important;
+    color: #eeeeee !important;
+}
