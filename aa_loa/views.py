@@ -43,6 +43,16 @@ def revoke_loa(request, loa_id):
 
 @login_required
 @permission_required("aa_loa.manage_loa")
+def hr_revoke_loa(request, loa_id):
+    loa = get_object_or_404(LeaveOfAbsence, id=loa_id)
+    if request.method == "POST":
+        loa.is_revoked = True
+        loa.save()
+        messages.success(request, f"LOA for {loa.user.username} cancelled by HR.")
+    return redirect("aa_loa:hr_dashboard")
+
+@login_required
+@permission_required("aa_loa.manage_loa")
 def loa_hr_dashboard(request):
     all_loas = LeaveOfAbsence.objects.all().select_related("user").order_by("-start_date")
     
