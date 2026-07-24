@@ -24,11 +24,15 @@
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     border-bottom: none;
-    padding: 4px 8px;
+    padding: 6px 10px;
+}
+
+.metric-card .panel-title {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-size: 0.65em;
+    font-size: 0.8rem;
+    margin: 0;
 }
 
 .metric-card .panel-body {
@@ -37,7 +41,7 @@
 }
 
 .metric-card h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--bs-body-color, #333);
     margin: 0;
