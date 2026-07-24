@@ -189,9 +189,9 @@ body.darkly .modern-card .panel-heading,
 body.darkly .modern-table thead th,
 body.cyborg .modern-card .panel-heading,
 body.cyborg .modern-table thead th {
-    background-color: var(--bs-tertiary-bg, #212529) !important;
-    border-color: var(--bs-border-color, #495057) !important;
-    color: var(--bs-heading-color, #f8f9fa) !important;
+    background-color: #212529 !important;
+    border-color: #495057 !important;
+    color: #f8f9fa !important;
 }
 
 [data-bs-theme="dark"] .modern-table tbody td,
@@ -199,5 +199,5 @@ body.night .modern-table tbody td,
 body.slate .modern-table tbody td,
 body.darkly .modern-table tbody td,
 body.cyborg .modern-table tbody td {
-    border-color: var(--bs-border-color, #373e47) !important;
+    border-color: #373e47 !important;
 }
