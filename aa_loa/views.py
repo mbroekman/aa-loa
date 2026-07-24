@@ -5,6 +5,7 @@ from django.utils import timezone
 
 from .forms import DirectorLOAForm, PlayerLOAForm
 from .models import LeaveOfAbsence
+from allianceauth.notifications import notify
 
 
 @login_required
@@ -49,6 +50,12 @@ def hr_revoke_loa(request, loa_id):
         loa.is_revoked = True
         loa.save()
         messages.success(request, f"LOA for {loa.user.username} cancelled by HR.")
+        notify(
+            user=loa.user,
+            title="Leave of Absence Cancelled",
+            message=f"Your Leave of Absence starting on {loa.start_date} was cancelled by HR ({request.user.username}).",
+            level="warning"
+        )
     return redirect("aa_loa:hr_dashboard")
 
 @login_required
