@@ -12,25 +12,37 @@
 
 {% block content %}
 <div class="col-lg-12">
-    <h1 class="page-header text-center">Leave of Absence - HR Dashboard</h1>
+    <h3 class="text-center" style="margin-top: 20px; margin-bottom: 20px;">Leave of Absence - HR Dashboard</h3>
 
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-3">
-            <div class="metric-card" style="border-bottom: 4px solid #28a745;" onclick="filterTable('Active')">
-                <div class="metric-value">{{ active_count }}</div>
-                <div class="metric-label">Active</div>
+            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #28a745;" onclick="filterTable('Active')">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Active</h3>
+                </div>
+                <div class="panel-body">
+                    <h2 style="margin:0;">{{ active_count }}</h2>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="metric-card" style="border-bottom: 4px solid #17a2b8;" onclick="filterTable('Upcoming')">
-                <div class="metric-value">{{ future_count }}</div>
-                <div class="metric-label">Upcoming</div>
+            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #17a2b8;" onclick="filterTable('Upcoming')">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Upcoming</h3>
+                </div>
+                <div class="panel-body">
+                    <h2 style="margin:0;">{{ future_count }}</h2>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="metric-card" style="border-bottom: 4px solid #007bff;" onclick="filterTable('')">
-                <div class="metric-value">{{ total_count }}</div>
-                <div class="metric-label">Total Processed</div>
+            <div class="metric-card text-center" style="cursor: pointer; border-bottom: 4px solid #007bff;" onclick="filterTable('')">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Total Processed</h3>
+                </div>
+                <div class="panel-body">
+                    <h2 style="margin:0;">{{ total_count }}</h2>
+                </div>
             </div>
         </div>
         <div class="col-md-3 text-right">

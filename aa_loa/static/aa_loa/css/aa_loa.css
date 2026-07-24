@@ -20,23 +20,27 @@
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-    text-align: center;
-    padding: 1rem;
-    cursor: pointer;
-}
-
-.metric-card .metric-value {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--bs-primary, inherit);
-    font-family: monospace;
-}
-
-.metric-card .metric-label {
-    font-size: 0.85rem;
-    color: var(--bs-secondary, #6c757d);
+.metric-card .panel-heading {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom: none;
+    padding: 10px 15px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    font-size: 0.8em;
+}
+
+.metric-card .panel-body {
+    padding: 10px;
+    text-align: center;
+}
+
+.metric-card h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bs-body-color, #333);
+    margin: 0;
 }
 
 /* Modern Generic Card (Forms & Tables) */
@@ -152,15 +156,15 @@ body.cyborg .modern-card {
     border-color: var(--bs-border-color, #495057) !important;
 }
 
-[data-bs-theme="dark"] .metric-card .metric-value,
+[data-bs-theme="dark"] .metric-card h2,
 [data-bs-theme="dark"] .modern-card .panel-title,
-body.night .metric-card .metric-value,
+body.night .metric-card h2,
 body.night .modern-card .panel-title,
-body.slate .metric-card .metric-value,
+body.slate .metric-card h2,
 body.slate .modern-card .panel-title,
-body.darkly .metric-card .metric-value,
+body.darkly .metric-card h2,
 body.darkly .modern-card .panel-title,
-body.cyborg .metric-card .metric-value,
+body.cyborg .metric-card h2,
 body.cyborg .modern-card .panel-title {
     color: var(--bs-body-color, #f8f9fa) !important;
 }
