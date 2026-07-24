@@ -68,6 +68,11 @@ def loa_hr_dashboard(request):
         LeaveOfAbsence.objects.all().select_related("user").order_by("-start_date")
     )
 
+    # Calculate metrics for the overview cards
+    active_count = sum(1 for loa in all_loas if loa.is_active)
+    future_count = sum(1 for loa in all_loas if loa.is_future)
+    total_count = len(all_loas)
+
     if request.method == "POST":
         form = DirectorLOAForm(request.POST)
         if form.is_valid():
@@ -82,5 +87,11 @@ def loa_hr_dashboard(request):
     return render(
         request,
         "aa_loa/hr_dashboard.html",
-        {"loas": all_loas, "form": form},
+        {
+            "loas": all_loas,
+            "form": form,
+            "active_count": active_count,
+            "future_count": future_count,
+            "total_count": total_count,
+        },
     )
