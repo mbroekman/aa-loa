@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.2] - 2026-07-24
+
+### Added
+
+- Added robust test suite with 100% backend test coverage using `tox` and Django `TestCase`.
+- Integrated GitHub Actions workflows (`automated-checks.yml`, `release.yml`, `potential-duplicates.yml`) for automated CI/CD and PyPI Trusted Publishing.
+- Added standard Alliance Auth pre-commit configuration (`flake8`, `black`, `isort`) for unified code formatting.
+
 ## [0.0.1] - 2026-07-24
 
 ### Added
