@@ -1,6 +1,6 @@
 {% extends "allianceauth/base.html" %}
 {% load i18n %}
-{% load bootstrap %}
+{% load django_bootstrap5 %}
 
 {% block page_title %}{% translate "Leave of Absence" %}{% endblock page_title %}
 
@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <form method="post" action="{% url 'aa_loa:index' %}">
                         {% csrf_token %}
-                        {{ form|bootstrap }}
+                        {% bootstrap_form form %}
                         <br>
                         <button type="submit" class="btn btn-success btn-block">Submit</button>
                     </form>
