@@ -15,6 +15,19 @@ class PlayerLOAForm(forms.ModelForm):
             "reason": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Set minimum date for HTML5 date pickers to today
+        today_str = timezone.localdate().strftime("%Y-%m-%d")
+        self.fields['start_date'].widget.attrs.update({'min': today_str})
+        self.fields['end_date'].widget.attrs.update({'min': today_str})
+
+    def clean_start_date(self):
+        start_date = self.cleaned_data.get("start_date")
+        if start_date and start_date < timezone.localdate():
+            raise forms.ValidationError("Start date cannot be in the past.")
+        return start_date
+
     def clean(self):
         cleaned_data = super().clean()
         start_date = cleaned_data.get("start_date")

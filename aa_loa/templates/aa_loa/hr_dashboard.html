@@ -99,6 +99,20 @@
         $('#loaTable').DataTable({
             "order": [[ 2, "desc" ]]
         });
+
+        // When start_date changes, update the min attribute of end_date
+        $('#id_start_date').on('change', function() {
+            var startDate = $(this).val();
+            if (startDate) {
+                $('#id_end_date').attr('min', startDate);
+                
+                // If end_date is now before start_date, clear it
+                var endDate = $('#id_end_date').val();
+                if (endDate && endDate < startDate) {
+                    $('#id_end_date').val('');
+                }
+            }
+        });
     });
 </script>
 {% endblock %}
