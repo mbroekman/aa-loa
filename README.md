@@ -76,10 +76,10 @@ sudo systemctl restart supervisor
 ### 2. Permissions
 Assign the following permissions to the appropriate states or groups in Alliance Auth:
 
-| Permission | Description |
-|---|---|
-| `aa_loa.basic_access` | Grants access to the LOA module for normal members. Allows them to submit and manage their own LOAs. |
-| `aa_loa.manage_loa` | Grants access to the HR Dashboard. Allows users to view all LOAs and submit proxy LOAs for other members. |
+| Permission Code | Django Admin Name | Description |
+|---|---|---|
+| `aa_loa.basic_access` | `Leave of Absence \| leave of absence \| Can access the LOA module` | Grants access to the LOA module for normal members. Allows them to submit and manage their own LOAs. |
+| `aa_loa.manage_loa` | `Leave of Absence \| leave of absence \| Can manage LOAs for other users and view HR dashboard` | Grants access to the HR Dashboard. Allows users to view all LOAs and submit proxy LOAs for other members. |
 
 ### 3. Setup the Celery Periodic Task
 To ensure LOA groups are automatically assigned and removed every night, you need to configure the daily Celery task in your `local.py` settings file.
