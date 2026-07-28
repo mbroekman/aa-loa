@@ -5,37 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.8] - 2026-07-24
+## [0.0.4] - 2026-07-28
 
 ### Fixed
 
-- Re-added brute force hardcoded backgrounds and text colors exclusively for dark themes (Darkly, Slate, Cyborg, Night, and data-bs-theme="dark") to prevent fallback behavior that resulted in white-on-white panel headings. Backgrounds are now explicitly `#222222` and `#1a1a1a` to ensure maximum contrast and readability across legacy configurations.
-
-## [0.0.7] - 2026-07-24
-
-### Fixed
-
-- Completely removed all hardcoded colors and backgrounds from `.modern-card` and `.metric-card`.
-- Reintroduced `.panel.panel-default` classes to all cards so they perfectly inherit colors natively from whatever theme Alliance Auth is running (Light or Darkly), ensuring flawless readability out-of-the-box.
-
-## [0.0.6] - 2026-07-24
-
-### Fixed
-
-- Completely purged all remaining Bootstrap CSS variables from dark mode overrides that were causing white backgrounds on panel headings in themes like Darkly.
-
-## [0.0.5] - 2026-07-24
-
-### Fixed
-
-- Replaced CSS variables with hardcoded hex colors to prevent themes from resolving fallbacks to white.
-- Greatly increased CSS specificity for `.panel-title` classes to enforce colors over Alliance Auth base themes.
-
-## [0.0.4] - 2026-07-24
-
-### Fixed
-
-- Added a cache-buster to the CSS stylesheet link to force browsers to load the new styling changes correctly on deployment.
+- Fixed severe UI color issues where panel headings appeared as white-on-white text in dark themes like Darkly.
+- Added strict fallback CSS backgrounds for dark themes to ensure readability.
+- Added cache-buster to CSS links to prevent browsers from clinging to old styles on deployments.
 
 ## [0.0.3] - 2026-07-24
 
