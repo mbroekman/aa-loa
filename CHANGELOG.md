@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.5] - 2026-07-28
+
+### Added
+
+- Added explicit `aa-discordbot` integration. The module now directly queues a Direct Message (DM) via `aadiscordbot.tasks.send_direct_message_by_user_id` when an LOA is cancelled by HR or automatically expires (Welcome Back), ensuring DMs are always sent even if the server's global notification forwarding is disabled.
+
 ## [0.0.4] - 2026-07-28
 
 ### Fixed

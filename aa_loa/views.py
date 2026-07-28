@@ -52,12 +52,27 @@ def hr_revoke_loa(request, loa_id):
         loa.is_revoked = True
         loa.save()
         messages.success(request, f"LOA for {loa.user.username} cancelled by HR.")
+        message_text = f"Your Leave of Absence starting on {loa.start_date} was cancelled by HR ({request.user.username})."
         notify(
             user=loa.user,
             title="Leave of Absence Cancelled",
-            message=f"Your Leave of Absence starting on {loa.start_date} was cancelled by HR ({request.user.username}).",
+            message=message_text,
             level="warning",
         )
+
+        try:
+            # Django
+            from django.conf import settings
+
+            if "aadiscordbot" in settings.INSTALLED_APPS:
+                # Third Party
+                from aadiscordbot.tasks import send_direct_message_by_user_id
+
+                send_direct_message_by_user_id.delay(
+                    loa.user.pk, f"**Leave of Absence Cancelled**\n{message_text}"
+                )
+        except Exception as e:
+            pass
     return redirect("aa_loa:hr_dashboard")
 
 

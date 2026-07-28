@@ -58,12 +58,27 @@ def sync_loa_groups():
 
             # Send Welcome Back Notification if not sent
             if not loa.notified_return and loa.end_date < today and not loa.is_revoked:
+                message_text = "Welcome back! Your LOA has expired. Let us know if you need an extension."
                 notify(
                     user=user,
                     title="Welcome Back from LOA",
-                    message="Welcome back! Your LOA has expired. Let us know if you need an extension.",
+                    message=message_text,
                     level="info",
                 )
+
+                try:
+                    # Django
+                    from django.conf import settings
+
+                    if "aadiscordbot" in settings.INSTALLED_APPS:
+                        # Third Party
+                        from aadiscordbot.tasks import send_direct_message_by_user_id
+
+                        send_direct_message_by_user_id.delay(
+                            user.pk, f"**Welcome Back from LOA**\n{message_text}"
+                        )
+                except Exception as e:
+                    logger.error(f"Failed to send Welcome Back DM: {e}")
                 loa.notified_return = True
                 loa.save(update_fields=["notified_return"])
 
