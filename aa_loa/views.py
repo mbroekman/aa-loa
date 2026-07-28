@@ -71,7 +71,7 @@ def hr_revoke_loa(request, loa_id):
                 send_direct_message_by_user_id.delay(
                     loa.user.pk, f"**Leave of Absence Cancelled**\n{message_text}"
                 )
-        except Exception as e:
+        except Exception:
             pass
     return redirect("aa_loa:hr_dashboard")
 
