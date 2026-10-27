@@ -116,7 +116,11 @@ def send_loa_webhook(loa_id):
             "color": 16753920,  # Orange
             "fields": [
                 {"name": gettext("Player"), "value": loa.user.username, "inline": True},
-                {"name": gettext("Start"), "value": str(loa.start_date), "inline": True},
+                {
+                    "name": gettext("Start"),
+                    "value": str(loa.start_date),
+                    "inline": True,
+                },
                 {"name": gettext("End"), "value": str(loa.end_date), "inline": True},
             ],
         }

@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase, override_settings
 from django.utils import timezone, translation
 
+# AA Industry App
 from aa_loa.discord_i18n import channel_language, default_language, user_language
 from aa_loa.models import LeaveOfAbsence, LOAConfig
 from aa_loa.tasks import send_loa_webhook
