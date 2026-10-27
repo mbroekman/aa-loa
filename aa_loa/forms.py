@@ -2,8 +2,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
-from .models import LeaveOfAbsence
+from .models import LeaveOfAbsence, LOAConfig
 
 
 class PlayerLOAForm(forms.ModelForm):
@@ -61,3 +62,26 @@ class DirectorLOAForm(PlayerLOAForm):
 
     class Meta(PlayerLOAForm.Meta):
         fields = ["user", "start_date", "end_date", "reason"]
+
+
+class LOAConfigLanguageForm(forms.ModelForm):
+    """Language of the LOA Discord webhook messages."""
+
+    class Meta:
+        model = LOAConfig
+        fields = ["discord_language"]
+
+    def __init__(self, *args, **kwargs):
+        from .discord_i18n import language_choices
+
+        super().__init__(*args, **kwargs)
+        self.fields["discord_language"] = forms.ChoiceField(
+            choices=language_choices(),
+            required=False,
+            label=_("Language of Discord messages"),
+            help_text=_(
+                "Webhook posts always use this language, whatever language the person "
+                "who triggers them uses. Messages to members follow their own language."
+            ),
+            widget=forms.Select(attrs={"class": "form-control"}),
+        )

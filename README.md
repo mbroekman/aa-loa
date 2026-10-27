@@ -96,3 +96,11 @@ CELERYBEAT_SCHEDULE['aa_loa_sync_groups'] = {
 ```
 
 Restart your celery worker (`sudo systemctl restart supervisor`) and the system will automatically activate/deactivate LOAs every day at midnight!
+
+## Language of Discord messages
+
+The LOA webhook post uses the language chosen on the HR dashboard under **Discord Messages**; when none is chosen, the installation default applies. Notifications and direct messages to members use each member's own Alliance Auth language. Set the default in `myauth/settings/local.py` (it falls back to `LANGUAGE_CODE`):
+
+```python
+DISCORD_MESSAGE_LANGUAGE = "en"  # or e.g. "nl-nl"
+```

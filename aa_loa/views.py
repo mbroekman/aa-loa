@@ -2,12 +2,14 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.translation import gettext
 
 # Alliance Auth
 from allianceauth.notifications import notify
 
-from .forms import DirectorLOAForm, PlayerLOAForm
-from .models import LeaveOfAbsence
+from .discord_i18n import discord_language, user_language
+from .forms import DirectorLOAForm, LOAConfigLanguageForm, PlayerLOAForm
+from .models import LeaveOfAbsence, LOAConfig
 
 
 @login_required
@@ -52,10 +54,16 @@ def hr_revoke_loa(request, loa_id):
         loa.is_revoked = True
         loa.save()
         messages.success(request, f"LOA for {loa.user.username} cancelled by HR.")
-        message_text = f"Your Leave of Absence starting on {loa.start_date} was cancelled by HR ({request.user.username})."
+        # In the member's own language, not the HR officer's.
+        with discord_language(user_language(loa.user)):
+            title = gettext("Leave of Absence Cancelled")
+            message_text = gettext(
+                "Your Leave of Absence starting on %(start)s was cancelled by HR "
+                "(%(by)s)."
+            ) % {"start": loa.start_date, "by": request.user.username}
         notify(
             user=loa.user,
-            title="Leave of Absence Cancelled",
+            title=title,
             message=message_text,
             level="warning",
         )
@@ -69,7 +77,7 @@ def hr_revoke_loa(request, loa_id):
                 from aadiscordbot.tasks import send_direct_message_by_user_id
 
                 send_direct_message_by_user_id.delay(
-                    loa.user.pk, f"**Leave of Absence Cancelled**\n{message_text}"
+                    loa.user.pk, f"**{title}**\n{message_text}"
                 )
         except Exception:
             pass
@@ -108,5 +116,21 @@ def loa_hr_dashboard(request):
             "active_count": active_count,
             "future_count": future_count,
             "total_count": total_count,
+            "language_form": LOAConfigLanguageForm(
+                instance=LOAConfig.objects.first() or LOAConfig()
+            ),
         },
     )
+
+
+@login_required
+@permission_required("aa_loa.manage_loa")
+def hr_discord_language(request):
+    """Save the language of the LOA webhook messages (HR dashboard)."""
+    config = LOAConfig.objects.first() or LOAConfig()
+    if request.method == "POST":
+        form = LOAConfigLanguageForm(request.POST, instance=config)
+        if form.is_valid():
+            form.save()
+            messages.success(request, gettext("Discord message language saved."))
+    return redirect("aa_loa:hr_dashboard")

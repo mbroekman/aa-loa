@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: aa-loa\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Default (installation setting)"
+msgstr "Standaard (installatie-instelling)"
+
+msgid "Welcome Back from LOA"
+msgstr "Welkom terug van je LOA"
+
+msgid ""
+"Welcome back! Your LOA has expired. Let us know if you need an extension."
+msgstr ""
+"Welkom terug! Je LOA is afgelopen. Laat het ons weten als je een verlenging "
+"nodig hebt."
+
+msgid "New Leave of Absence"
+msgstr "Nieuwe Leave of Absence"
+
+#, python-format
+msgid "Proxy LOA submitted by %(user)s"
+msgstr "LOA namens iemand ingediend door %(user)s"
+
+msgid "Player"
+msgstr "Speler"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "End"
+msgstr "Einde"
+
+msgid "Reason"
+msgstr "Reden"
+
+msgid "Leave of Absence Cancelled"
+msgstr "Leave of Absence geannuleerd"
+
+#, python-format
+msgid ""
+"Your Leave of Absence starting on %(start)s was cancelled by HR (%(by)s)."
+msgstr "Je Leave of Absence vanaf %(start)s is door HR geannuleerd (%(by)s)."
+
+msgid "Discord message language saved."
+msgstr "Taal van Discord-berichten opgeslagen."
+
+msgid "Language of Discord messages"
+msgstr "Taal van Discord-berichten"
+
+msgid ""
+"Webhook posts always use this language, whatever language the person who "
+"triggers them uses. Messages to members follow their own language."
+msgstr ""
+"Webhookberichten gebruiken altijd deze taal, ongeacht de taal van degene die "
+"ze veroorzaakt. Berichten aan leden volgen hun eigen taal."
+
+msgid "Discord Messages"
+msgstr "Discord-berichten"
+
+msgid "Save"
+msgstr "Opslaan"

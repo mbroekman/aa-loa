@@ -66,6 +66,19 @@
                     </form>
                 </div>
             </div>
+
+            <div class="panel panel-default modern-card">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fab fa-discord"></i> {% translate "Discord Messages" %}</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post" action="{% url 'aa_loa:hr_discord_language' %}">
+                        {% csrf_token %}
+                        {% bootstrap_form language_form %}
+                        <button type="submit" class="btn btn-primary btn-block btn-modern">{% translate "Save" %}</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <!-- All LOAs -->

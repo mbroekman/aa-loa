@@ -17,6 +17,15 @@ class LOAConfig(models.Model):
         null=True,
         help_text="Optional Discord Webhook URL for Director notifications when LOAs are created.",
     )
+    discord_language = models.CharField(
+        max_length=10,
+        blank=True,
+        default="",
+        help_text=(
+            "Language of the messages sent to the webhook. Empty uses the "
+            "installation default (DISCORD_MESSAGE_LANGUAGE or LANGUAGE_CODE)."
+        ),
+    )
 
     class Meta:
         verbose_name = "LOA Config"

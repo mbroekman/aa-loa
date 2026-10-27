@@ -10,4 +10,5 @@ urlpatterns = [
     path("revoke/<int:loa_id>/", views.revoke_loa, name="revoke"),
     path("hr/", views.loa_hr_dashboard, name="hr_dashboard"),
     path("hr/revoke/<int:loa_id>/", views.hr_revoke_loa, name="hr_revoke"),
+    path("hr/discord-language/", views.hr_discord_language, name="hr_discord_language"),
 ]

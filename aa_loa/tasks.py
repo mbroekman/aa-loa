@@ -7,11 +7,13 @@ from celery import shared_task
 # Django
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext
 
 # Alliance Auth
 from allianceauth.notifications import notify
 from allianceauth.services.hooks import get_extension_logger
 
+from .discord_i18n import channel_language, discord_language, user_language
 from .models import LeaveOfAbsence, LOAConfig
 
 logger = get_extension_logger(__name__)
@@ -58,10 +60,15 @@ def sync_loa_groups():
 
             # Send Welcome Back Notification if not sent
             if not loa.notified_return and loa.end_date < today and not loa.is_revoked:
-                message_text = "Welcome back! Your LOA has expired. Let us know if you need an extension."
+                with discord_language(user_language(user)):
+                    title = gettext("Welcome Back from LOA")
+                    message_text = gettext(
+                        "Welcome back! Your LOA has expired. Let us know if you need "
+                        "an extension."
+                    )
                 notify(
                     user=user,
-                    title="Welcome Back from LOA",
+                    title=title,
                     message=message_text,
                     level="info",
                 )
@@ -75,7 +82,7 @@ def sync_loa_groups():
                         from aadiscordbot.tasks import send_direct_message_by_user_id
 
                         send_direct_message_by_user_id.delay(
-                            user.pk, f"**Welcome Back from LOA**\n{message_text}"
+                            user.pk, f"**{title}**\n{message_text}"
                         )
                 except Exception as e:
                     logger.error(f"Failed to send Welcome Back DM: {e}")
@@ -97,24 +104,27 @@ def send_loa_webhook(loa_id):
     except LeaveOfAbsence.DoesNotExist:
         return
 
-    title = "New Leave of Absence"
-    if loa.submitted_by:
-        title = f"Proxy LOA submitted by {loa.submitted_by.username}"
+    with discord_language(channel_language(config.discord_language)):
+        title = gettext("New Leave of Absence")
+        if loa.submitted_by:
+            title = gettext("Proxy LOA submitted by %(user)s") % {
+                "user": loa.submitted_by.username
+            }
 
-    embed = {
-        "title": title,
-        "color": 16753920,  # Orange
-        "fields": [
-            {"name": "Player", "value": loa.user.username, "inline": True},
-            {"name": "Start", "value": str(loa.start_date), "inline": True},
-            {"name": "End", "value": str(loa.end_date), "inline": True},
-        ],
-    }
+        embed = {
+            "title": title,
+            "color": 16753920,  # Orange
+            "fields": [
+                {"name": gettext("Player"), "value": loa.user.username, "inline": True},
+                {"name": gettext("Start"), "value": str(loa.start_date), "inline": True},
+                {"name": gettext("End"), "value": str(loa.end_date), "inline": True},
+            ],
+        }
 
-    if loa.reason:
-        embed["fields"].append(
-            {"name": "Reason", "value": loa.reason[:1000], "inline": False}
-        )
+        if loa.reason:
+            embed["fields"].append(
+                {"name": gettext("Reason"), "value": loa.reason[:1000], "inline": False}
+            )
 
     payload = {"embeds": [embed]}
     try:

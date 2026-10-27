@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Discord messages in a fixed language. The LOA webhook post uses the language chosen on the HR dashboard (*Discord Messages*), else the new `DISCORD_MESSAGE_LANGUAGE` setting, else `LANGUAGE_CODE`. The "Welcome back" and "LOA cancelled" notifications and DMs use the member's own Alliance Auth language instead of the HR officer's. These texts are translatable, with a Dutch translation. Migration `0002`.
+
 ## [0.0.5] - 2026-07-28
 
 ### Added
