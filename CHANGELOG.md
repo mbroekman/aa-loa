@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-25
+
+### Removed
+
+- **Python 3.10 support dropped.** Minimum supported version is now Python 3.11.
+
 ### Added
 
 - Discord messages in a fixed language. The LOA webhook post uses the language chosen on the HR dashboard (*Discord Messages*), else the new `DISCORD_MESSAGE_LANGUAGE` setting, else `LANGUAGE_CODE`. The "Welcome back" and "LOA cancelled" notifications and DMs use the member's own Alliance Auth language instead of the HR officer's. These texts are translatable, with a Dutch translation. Migration `0002`.
